@@ -1,9 +1,6 @@
 #include <iostream>
-#include <fstream>
-#include <unistd.h>
-#include <string>
-#include <ctime>
-#include <cstdlib>
+#include <unistd.h>	// chdir, getcwd
+#include <libgen.h>	// basename
 
 bool scanVolume(const std::string& directory) {
 	// Changer le répertoire de travail
@@ -11,12 +8,15 @@ bool scanVolume(const std::string& directory) {
 		std::cerr << "Impossible d'accéder au répertoire " << directory << std::endl;
 		return false;
 	}
-	// Obtenir la date actuelle pour le nom du fichier
-	time_t now = time(0);
-	struct tm* timeinfo = localtime(&now);
-	char buffer[80];
-	strftime(buffer, sizeof(buffer), "%Y-%m-%d", timeinfo);
-	std::string filename = "/Users/danv/Documents/Archives/Volumes/" + std::string(buffer) + ".txt";
+	char buffer[PATH_MAX];
+	if (getcwd(buffer, PATH_MAX) == nullptr) {
+		std::cerr << "Impossible d'obtenir le répertoire courant" << std::endl;
+		return false;
+	}
+	// Utiliser basename pour obtenir la dernière partie du chemin
+	char* dirName = basename(buffer);
+	std::string filename = "/Users/danv/Documents/Archives/Volumes/";
+	filename.append(dirName).append(".txt");
 
 	// Exécuter la commande 'find' et rediriger la sortie vers le fichier
 	std::string command = "find . -type f > \"" + filename + "\"";
