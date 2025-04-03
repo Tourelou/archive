@@ -15,7 +15,7 @@ std::string find_string = "";
 std::string scan_string = "";
 bool langFranc = false;
 
-void prt_message(std::string &m) {
+void prt_message(const std::string &m) {
 	std::cout << m << std::endl;
 }
 
@@ -41,16 +41,6 @@ int main(int argc, char *argv[]) {
 	std::string baseArchPath = "$HOME/Documents/Archives/Volumes";
 	baseArchPath = expandHome(baseArchPath);
 	langFranc = getFrancais();
-
-	// Tout d'abord, est-ce que le répertoire existe ?
-
-	if ( ! Exists_or_createDirectory(baseArchPath)) {
-		if (langFranc) std::cout << "Problème: Le répertoire " << baseArchPath
-								<< " n'existe pas, et je ne peux le créer." << std::endl;
-		else std::cout << "Problem: The folder " << baseArchPath
-								<< " doesn't exists, and I can't create it." << std::endl;
-		return 10;
-	}
 
 		// Set les éléments pour parser avec argparse.hpp
 	argparse arg({.version = message_version});
@@ -97,7 +87,13 @@ int main(int argc, char *argv[]) {
 			else prt_message(en_message_exclude);
 			return 1;
 		}
-		else findPattern(baseArchPath, find_string);
+		else {
+			if(dirExists(baseArchPath)) findPattern(baseArchPath, find_string);
+			else {
+				if (langFranc) prt_message("Aucune structure de répertoires où sont les fichiers .txt.");
+				else prt_message("No directory structure where .txt files are stored.");
+			}
+		}
 	}
 
 	if (find_string == "") {
@@ -106,7 +102,19 @@ int main(int argc, char *argv[]) {
 			else prt_message(en_message_erreur);
 			return 1;
 		}
-		else return !scanVolume(baseArchPath, scan_string);
+		else {
+			if (dirExists(baseArchPath)) return !scanVolume(baseArchPath, scan_string);
+			else {
+				if (createDir(baseArchPath)) return !scanVolume(baseArchPath, scan_string);
+				else {
+					if (langFranc) std::cout << "Problème: Le répertoire " << baseArchPath
+							<< " n'existe pas, et je ne peux le créer." << std::endl;
+					else std::cout << "Problem: The folder " << baseArchPath
+							<< " doesn't exists, and I can't create it." << std::endl;
+					return 10;
+				}
+			}
+		}
 	}
 	return 0;
 }
