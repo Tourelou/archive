@@ -4,5 +4,5 @@
 	#include <string>
 
 	bool searchPatternInFile(const std::string&, const std::string&);
-	void findPattern(const std::string&);
+	void findPattern(const std::string&, const std::string&);
 #endif // __FIND_PATTERN__

@@ -35,8 +35,7 @@ bool searchPatternInFile(const std::string& filename, const std::string& pattern
 	return occurence;
 }
 
-void findPattern(const std::string& pat) {
-	std::string path = "/Users/danv/Documents/Archives/Volumes";  // Chemin du répertoire à parcourir
+void findPattern(const std::string& path,const std::string& pat) {
 	
 	// Changer le répertoire de travail
 	if (chdir(path.c_str()) != 0) {

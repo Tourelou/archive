@@ -3,6 +3,6 @@
 
 	#include <string>
 
-	bool scanVolume(const std::string&);
+	bool scanVolume(const std::string&, const std::string&);
 
 #endif	// __SCAN_VOLUME__

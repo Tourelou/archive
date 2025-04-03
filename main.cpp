@@ -1,6 +1,11 @@
 #include <iostream>
+#include <sys/stat.h>	// Pour directoryExists
+#include <cstdlib> // Pour getenv - expandHome
+#include <string>
+#include <unistd.h> // Pour access() (optionnel)
 
-#include "argparse.hpp" // Parse la ligne de commande
+#include "includes/argparse.hpp" // Parse la ligne de commande
+#include "includes/mkMultpleDir.hpp"
 #include "my_lib/fr.en_strings.hpp"
 #include "my_lib/getFrancais.hpp"
 #include "my_lib/find.hpp"
@@ -14,13 +19,40 @@ void prt_message(std::string &m) {
 	std::cout << m << std::endl;
 }
 
+std::string expandHome(const std::string& path) {
+	const std::string homeEnv = "$HOME";
+	if (path.substr(0, homeEnv.size()) == homeEnv) {
+		const char* home = std::getenv("HOME");
+		if (home) {
+			// Remplace le '$HOME' par le chemin réel
+			return std::string(home) + path.substr(homeEnv.size());
+		}
+	}
+	return path; // Renvoie le chemin tel quel s'il ne commence pas par '$HOME'
+}
+
+bool Exists_or_createDirectory(const std::string& basePath) {
+	if (dirExists(basePath)) return true;
+	return createDir(basePath);
+}
+
 int main(int argc, char *argv[]) {
 
+	std::string baseArchPath = "$HOME/Documents/Archives/Volumes";
+	baseArchPath = expandHome(baseArchPath);
 	langFranc = getFrancais();
 
 	// Tout d'abord, est-ce que le répertoire existe ?
 
-	// Set les éléments pour parser avec argparse.hpp
+	if ( ! Exists_or_createDirectory(baseArchPath)) {
+		if (langFranc) std::cout << "Problème: Le répertoire " << baseArchPath
+								<< " n'existe pas, et je ne peux le créer." << std::endl;
+		else std::cout << "Problem: The folder " << baseArchPath
+								<< " doesn't exists, and I can't create it." << std::endl;
+		return 10;
+	}
+
+		// Set les éléments pour parser avec argparse.hpp
 	argparse arg({.version = message_version});
 
 	if (langFranc) {
@@ -65,7 +97,7 @@ int main(int argc, char *argv[]) {
 			else prt_message(en_message_exclude);
 			return 1;
 		}
-		else findPattern(find_string);
+		else findPattern(baseArchPath, find_string);
 	}
 
 	if (find_string == "") {
@@ -74,7 +106,7 @@ int main(int argc, char *argv[]) {
 			else prt_message(en_message_erreur);
 			return 1;
 		}
-		else return !scanVolume(scan_string);
+		else return !scanVolume(baseArchPath, scan_string);
 	}
 	return 0;
 }
