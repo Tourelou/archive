@@ -16,7 +16,7 @@ archive -s < volume to be scanned >
 
 ```
 
-`archive` will collect all files in this tree and create a file from it. txt on behalf of this volume that it will deposit in your folder: ‘$HOME/Documents/Archives/Volumes/`
+`archive` will collect all files in this tree and create a file from it. txt on behalf of this volume that it will deposit in your folder: `$HOME/Documents/Archives/Volumes/`
 
 This directory does not exist, no problem `archive` will create it automatically.
 
@@ -34,7 +34,7 @@ archive -f < regex pattern to be found >
 
 In the following example, I am searching for Davinci Resolve. Here is the result:
 
-```bash
+```plaintext
 archive -f resolve
 
 --------------------------------------------------------------------
@@ -101,7 +101,7 @@ archive -f < motif regex à trouver >
 
 Dans l'exemple qui suit, je fais une recherche pour Davinci Resolve. Voici le résultat:
 
-```bash
+```plaintext
 archive -f resolve
 
 --------------------------------------------------------------------
