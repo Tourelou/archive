@@ -3,7 +3,7 @@
 
 	#include <string>
 
-	std::string message_version = "version 2025-04-02";
+	std::string message_version = "version 2025-04-03";
 
 	std::string fr_message_description = "Trouve un motif ou scan un volume vers un fichier texte";
 
