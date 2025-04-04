@@ -83,7 +83,7 @@ archive -s < volume à scanner >
 
 ```
 
-`archive` va rammasser tout les fichiers de cette arborescence et en créer un fichier .txt au nom de ce volume qu'il déposera dans votre dossier: `$HOME/Documents/Archives/Volumes/`.
+`archive` va ramasser tous les fichiers de cette arborescence et en créer un fichier .txt au nom de ce volume qu'il déposera dans votre dossier: `$HOME/Documents/Archives/Volumes/`.
 
 Ce répertoire n'existe pas, pas de problème `archive` va le créer automatiquement.
 
@@ -91,7 +91,7 @@ Et voilà, pas plus compliqué que ça.
 
 ### find: la suite ...
 
-Maintenant que nous avons scanner toute notre collection, nous sommes en mesure d'interroger le programme, à savoir: Sur quelle volume se trouve tel ou tel fichier. Pour ce faire:
+Maintenant que nous avons scanner toute notre collection, nous sommes en mesure d'interroger le programme, à savoir: Sur quel volume se trouve tel ou tel fichier. Pour ce faire:
 
 ```bash
 
@@ -127,6 +127,6 @@ Le motif «resolve» dans /.../..../Documents/Archives/Volumes/*.txt
 --------------------------------------------------------------------
 ```
 
-Et voilà, Simple et efficasse.
+Et voilà, simple et efficace.
 
-Ainsi, si une version en particulier de DaVinci Resolve crash à répétition sur mon système, je peux ré-installer une version précédante.
+Ainsi, si une version en particulier de DaVinci Resolve crash à répétition sur mon système, je peux ré-installer une version précédente.
