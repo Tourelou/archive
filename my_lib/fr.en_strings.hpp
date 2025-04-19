@@ -3,8 +3,6 @@
 
 	#include <string>
 
-	std::string message_version = "version 2025-04-03";
-
 	std::string fr_message_description = "Trouve un motif ou scan un volume vers un fichier texte";
 
 	std::string fr_message_usage = "Usage: archive [-h] [-ver] <-f|--find motif> | <-s|--scan volume à scanner>";
