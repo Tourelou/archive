@@ -40,23 +40,23 @@ archive -f resolve
 --------------------------------------------------------------------
 The pattern "resolve" in/.../..../Documents/Archives/Volumes/*. txt
 --------------------------------------------------------------------
-2019-10-06.txt <=== . /Images/DaVinci Resolve/DaVinci_Resolve_11.3.1.zip
-2019-10-06.txt <=== . /Images/DaVinci Resolve/DaVinci_Resolve_11_Manual_2015-03-24.pdf
-2019-10-06.txt <=== . /Images/DaVinci Resolve/DaVinci_Resolve_12.5.1.zip
-2019-10-06.txt <=== . /Images/DaVinci Resolve/DaVinci_Resolve_14.3.zip
+2019-10-06.txt <=== ./Images/DaVinci Resolve/DaVinci_Resolve_11.3.1.zip
+2019-10-06.txt <=== ./Images/DaVinci Resolve/DaVinci_Resolve_11_Manual_2015-03-24.pdf
+2019-10-06.txt <=== ./Images/DaVinci Resolve/DaVinci_Resolve_12.5.1.zip
+2019-10-06.txt <=== ./Images/DaVinci Resolve/DaVinci_Resolve_14.3.zip
 --------------------------------------------------------------------
-2023-07-21.txt <=== . /Images/DaVinci_Resolve_18.1.4.dmg
+2023-07-21.txt <=== ./Images/DaVinci_Resolve_18.1.4.dmg
 --------------------------------------------------------------------
-2023-10-02.txt <=== . /Images/DaVinci_Resolve_18.5.dmg
-2023-10-02.txt <=== . /Images/DaVinci_Resolve_18.6.dmg
+2023-10-02.txt <=== ./Images/DaVinci_Resolve_18.5.dmg
+2023-10-02.txt <=== ./Images/DaVinci_Resolve_18.6.dmg
 --------------------------------------------------------------------
-2023-12-01.txt <=== . /Images/DaVinci_Resolve_18.6.1.dmg
-2023-12-01.txt <=== . /Images/DaVinci_Resolve_18.6.2.dmg
-2023-12-01.txt <=== . /Images/DaVinci_Resolve_18.6.3.zip
+2023-12-01.txt <=== ./Images/DaVinci_Resolve_18.6.1.dmg
+2023-12-01.txt <=== ./Images/DaVinci_Resolve_18.6.2.dmg
+2023-12-01.txt <=== ./Images/DaVinci_Resolve_18.6.3.zip
 --------------------------------------------------------------------
-2024-07-05.txt <=== . /Images/DaVinci_Resolve_18.6.6.zip
+2024-07-05.txt <=== ./Images/DaVinci_Resolve_18.6.6.zip
 --------------------------------------------------------------------
-2025-03-01.txt <=== . /Images/DaVinci_Resolve_19.1.3.zip
+2025-03-01.txt <=== ./Images/DaVinci_Resolve_19.1.3.zip
 --------------------------------------------------------------------
 ```
 
