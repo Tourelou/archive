@@ -2,22 +2,20 @@
 #include <unistd.h>	// chdir, getcwd
 #include <libgen.h>	// basename
 #ifdef __linux__
-    #include <linux/limits.h>
+	#include <linux/limits.h>
 #endif
 
-#include "getFrancais.hpp"
+#include "arc_locale.hpp"
 
 bool scanVolume(const std::string& path, const std::string& directory) {
 	// Changer le répertoire de travail
 	if (chdir(directory.c_str()) != 0) {
-		if (langFranc) std::cerr << "Impossible d'accéder au répertoire " << directory << std::endl;
-		else std::cerr << "Can't access folder " << directory << std::endl;
+		std::cerr << arc_locale("err_acces_dir") << directory << std::endl;
 		return false;
 	}
 	char buffer[PATH_MAX];
 	if (getcwd(buffer, PATH_MAX) == nullptr) {
-		if (langFranc) std::cerr << "Impossible d'obtenir le répertoire courant" << std::endl;
-		else std::cerr << "Can't get the current directory" << std::endl;
+		std::cerr << arc_locale("err_get_pwd") << std::endl;
 		return false;
 	}
 	// Utiliser basename pour obtenir la dernière partie du chemin
@@ -30,12 +28,10 @@ bool scanVolume(const std::string& path, const std::string& directory) {
 	int result = system(command.c_str());
 	
 	if (result == 0) {
-		if (langFranc) std::cout << "Scan terminé. Résultats sauvegardés dans «" << path << "»" << std::endl;
-		else std::cout << "Scan completed. Results saved to «" << path << "»" << std::endl;
+		printf(arc_locale("info_scan").c_str(), path.c_str());
 		return true;
 	} else {
-		if (langFranc) std::cerr << "Erreur lors de l'exécution de la commande find" << std::endl;
-		else std::cerr << "Problems to execute the find command" << std::endl;
+		std::cerr << arc_locale("err_cmd_find") << std::endl;
 		return false;
 	}
 }
