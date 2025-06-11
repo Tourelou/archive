@@ -31,11 +31,16 @@ int main(int argc, char *argv[]) {
 
 	set_arc_locale();
 
+	if (argc == 1) {
+		std::cout << arc_locale("message_erreur") << "\n" << arc_locale("message_aide") << std::endl;
+		return 0;
+	}
+
 	std::string baseArchPath = "$HOME/Documents/Archives/Volumes";
 	baseArchPath = expandHome(baseArchPath);
 
 	// Set les éléments pour parser avec argparse.hpp
-	argparseBase arg({.version = "version 2025-06-05"});
+	argparseBase arg({.version = "version 2025-06-11"});
 
 	arg.description = arc_locale("message_description");
 	arg.usage = arc_locale("message_usage");
